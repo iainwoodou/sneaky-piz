@@ -26,25 +26,25 @@ export default defineConfig({
       manifest: {
         name: 'IMD Editor',
         short_name: 'mdeditor',
-        start_url: '/sneaky-piz/',
+        start_url: './',
         display: 'standalone',
         background_color: '#efefef',
         theme_color: '#efefef',
         icons: [
           {
-            src: '/sneaky-piz/icons/sm.png',
+            src: './192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/sneaky-piz/icons/512.png',
+            src: './512.png',
             sizes: '512x512',
             type: 'image/png',
           },
         ],
         file_handlers: [
           {
-            action: '/sneaky-piz/index.html',
+            action: './index.html',
             accept: {
               'application/json': ['.imd'],
             },
