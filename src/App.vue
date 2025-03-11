@@ -1,8 +1,10 @@
 <script>
 import { useGlobalStore } from '@/store/store.js';
-
+import { fileManager } from '@/mixins/fileManager.js';
+import InstallPopup from '@/InstallPopup.vue';
 export default {
-  components: {},
+  components: {InstallPopup},
+  mixins: [fileManager],
   setup() {
     const store = useGlobalStore()
     return {
@@ -12,10 +14,14 @@ export default {
   data() {
     return {}
   },
-  methods: {}
+
+  methods: {},
 }
 </script>
 
-<template></template>
+<template>
+  HEllo
+  <InstallPopup />
+</template>
 
 <style></style>

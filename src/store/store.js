@@ -5,7 +5,10 @@ const vleUtils = new VleModule();
 
 export const useGlobalStore = defineStore('store', {
   state: () => ({
+    fileHandle : null,
+
     /**
+     * 
      * @type {Boolean} Indicates if running inside the VLE.
      * @default false (Offline)
      */
