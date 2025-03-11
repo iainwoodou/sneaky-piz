@@ -25,26 +25,26 @@ export default defineConfig({
       },
       manifest: {
         name: 'IMD Editor',
-        short_name: 'mdeditor',
-        start_url: './',
+        short_name: '.IMDeditor',
+        start_url: '/',
         display: 'standalone',
         background_color: '#efefef',
         theme_color: '#efefef',
         icons: [
           {
-            src: './192.png',
+            src: 'icons/192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: './512.png',
+            src: 'icons/512.png',
             sizes: '512x512',
             type: 'image/png',
           },
         ],
         file_handlers: [
           {
-            action: './index.html',
+            action: '/index.html',
             accept: {
               'application/json': ['.imd'],
             },
