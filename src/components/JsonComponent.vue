@@ -2,9 +2,12 @@
 import { useGlobalStore } from '@/store/store.js';
 import hljs from 'highlight.js/lib/core';
 import CodeEditor from 'simple-code-editor';
+import VueFormGenerator from 'vue-form-generator';
+import 'vue-form-generator/dist/vfg.css';
 export default {
   components: {
-    CodeEditor
+    CodeEditor,
+    VueFormGenerator
   },
   setup() {
     const store = useGlobalStore();
@@ -14,7 +17,9 @@ export default {
   },
   data() {
     return {
-      hljs
+      hljs,
+      model: {},
+      schema: {}
     };
   },
   methods: {}
@@ -34,6 +39,9 @@ export default {
       height="600px"
     />
   </div>
+
+  <vue-form-generator :schema="store.zipfiles['schema.json'].data" :model="store.zipfiles['data.json'].data"></vue-form-generator>
+
 </template>
 
 <style></style>
