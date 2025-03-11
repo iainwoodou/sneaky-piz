@@ -26,7 +26,7 @@ export default defineConfig({
       manifest: {
         name: 'IMD Editor',
         short_name: '.imd Editor',
-        start_url: '/sneaky-piz',
+        start_url: 'sneaky-piz/',
         display: 'standalone',
         background_color: '#efefef',
         theme_color: '#efefef',
