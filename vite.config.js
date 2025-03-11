@@ -25,14 +25,14 @@ export default defineConfig({
       },
       manifest: {
         name: 'IMD Editor',
-        short_name: '.imd Editor',
-        start_url: 'sneaky-piz/',
+        short_name: 'mdeditor',
+        start_url: '/sneaky-piz/',
         display: 'standalone',
         background_color: '#efefef',
         theme_color: '#efefef',
         icons: [
           {
-            src: 'icons/192.png',
+            src: 'icons/sm.png',
             sizes: '192x192',
             type: 'image/png',
           },
