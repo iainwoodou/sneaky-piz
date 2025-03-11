@@ -6,18 +6,18 @@ const fileManager = {
         }
     },
     methods: {
-      async GrabIMDFile() {
+      async getIMDfile() {
         const file = await this.store.fileHandle.getFile();
         if (!file) return;
         this.processFile(file);
       },
 
-      async fetchZipFile(url) {
+      async fetchIMDfile(url) {
         try {
           const response = await fetch(url);
           if (!response.ok) throw new Error('Network response was not ok');
           const data = await response.arrayBuffer();
-          this.processZipData(data);
+          this.processIMDdata(data);
         } catch (error) {
           console.error('Failed to fetch zip file:', error);
         }
@@ -30,21 +30,26 @@ const fileManager = {
       },
 
       async processFile(file) {
+        this.store.fileName= file.name
         const reader = new FileReader();
         reader.onload = async (e) => {
           const data = e.target.result;
-          this.processZipData(data);
+          console.log(data)
+          this.processIMDdata(data);
+          this.store.dataloaded = true
         };
         reader.readAsArrayBuffer(file);
       },
 
-      async processZipData(data) {
+      async processIMDdata(data) {
         const zip = await JSZip.loadAsync(data);
         console.log(zip.files);
 
         for (const filename in zip.files) {
-          let o = {};
           const file = zip.file(filename);
+          if(file){
+          let o = {};
+          
           if (/\.(jpe?g|png|gif|bmp)$/i.test(filename)) {
             const blob = await file.async('blob');
             const url = URL.createObjectURL(blob);
@@ -62,6 +67,8 @@ const fileManager = {
           this.store.zipfiles[filename] = o;
           console.log(filename);
         }
+      }
+
       },
 
       async exportIMDFile() {
@@ -80,7 +87,7 @@ const fileManager = {
         const url = URL.createObjectURL(content);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'export.imd';
+        a.download = this.store.fileName;
         a.click();
         URL.revokeObjectURL(url);
       }
@@ -92,7 +99,7 @@ const fileManager = {
               return;
             }
             this.store.fileHandle = launchParams.files[0];
-            this.GrabIMDFile();
+            this.getIMDfile();
           });
         }
     },

@@ -26,8 +26,10 @@
     "@awesome.me/kit-4b5ffe0e68": "latest",
     "@ou-imdt/css": "^3.0.0",
     "@ou-imdt/utils": "^0.3.0",
+    "highlight.js": "11.8.0",
     "jszip": "^3.10.1",
     "pinia": "^2.3.0",
+    "simple-code-editor": "^2.0.9",
     "vue": "^3.5.13"
   },
   "devDependencies": {
