@@ -32,7 +32,12 @@ export default defineConfig({
         theme_color: '#efefef',
         icons: [
           {
-            src: 'icons/512.png',
+            src: '/sneaky-piz/icons/sm.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: '/sneaky-piz/icons/512.png',
             sizes: '512x512',
             type: 'image/png',
           },
