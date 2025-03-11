@@ -46,7 +46,7 @@ export default defineConfig({
           {
             action: '/index.html',
             accept: {
-              'application/json': ['.zip'],
+              'application/json': ['.imd'],
             },
           },
         ],

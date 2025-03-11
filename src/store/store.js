@@ -6,7 +6,7 @@ const vleUtils = new VleModule();
 export const useGlobalStore = defineStore('store', {
   state: () => ({
     fileHandle : null,
-
+    zipfiles  : {},
     /**
      * 
      * @type {Boolean} Indicates if running inside the VLE.

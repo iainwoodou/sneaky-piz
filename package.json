@@ -22,23 +22,24 @@
     "lint:fix": "eslint --fix src/"
   },
   "dependencies": {
+    "@awesome.me/kit-4b5ffe0e68": "latest",
     "@ou-imdt/css": "^3.0.0",
     "@ou-imdt/utils": "^0.3.0",
+    "jszip": "^3.10.1",
     "pinia": "^2.3.0",
-    "vue": "^3.5.13",
-    "@awesome.me/kit-4b5ffe0e68": "latest"
+    "vue": "^3.5.13"
   },
   "devDependencies": {
-     "vite-plugin-pwa": "^0.21.1",
     "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^9.16.0",
-    "globals": "^15.13.0",
     "@ou-imdt/build-metadata": "^1.0.1",
     "@vitejs/plugin-vue": "^5.2.1",
     "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-vue": "^9.32.0",
+    "globals": "^15.13.0",
     "prettier": "^3.4.2",
-    "vite": "^6.0.2"
+    "vite": "^6.0.2",
+    "vite-plugin-pwa": "^0.21.1"
   }
 }
