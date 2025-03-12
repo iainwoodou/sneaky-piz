@@ -40,11 +40,7 @@ export default {
       <ImageComponent v-if="section === 3" />
     </div>
 
-<div style="display: none;">
-  <button v-for="(file, index) in Object.keys(store.zipfiles)" :key="index" class="filebutton">
-      <i class="fa fa-file" /> {{ file }}
-    </button>
-</div>
+
   </div>
   <InstallPopup />
 </template>

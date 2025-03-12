@@ -34,9 +34,7 @@ const fileManager = {
         const reader = new FileReader();
         reader.onload = async (e) => {
           const data = e.target.result;
-          console.log(data)
           this.processIMDdata(data);
-          this.store.dataloaded = true
         };
         reader.readAsArrayBuffer(file);
       },
@@ -59,15 +57,18 @@ const fileManager = {
             const content = await file.async('string');
             o.type = 'txt';
             o.data = content;
-            if (filename === 'data.json') {
-              this.jsonContent = content;
-              this.accordionJson = JSON.parse(content);
-            }
+                if(filename.endsWith('.json')){
+                o.data = JSON.parse(content);
+              }
+
+
           }
           this.store.zipfiles[filename] = o;
           console.log(filename);
         }
       }
+
+      this.store.dataloaded = true
 
       },
 
@@ -80,7 +81,11 @@ const fileManager = {
             const blob = await response.blob();
             zip.file(filename, blob);
           } else {
-            zip.file(filename, file.data);
+            if (typeof file.data === 'object') {
+              zip.file(filename, JSON.stringify(file.data));
+            } else {
+              zip.file(filename, file.data);
+            }
           }
         }
         const content = await zip.generateAsync({ type: 'blob' });

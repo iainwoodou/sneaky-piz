@@ -20,9 +20,12 @@ export default defineConfig({
     }),
     VitePWA({
       registerType: 'autoUpdate',
+
+/*
       devOptions: {
         enabled: true,
       },
+*/
       manifest: {
         name: 'IMD Editor',
         short_name: '.IMDeditor',

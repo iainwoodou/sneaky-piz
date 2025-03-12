@@ -1,13 +1,10 @@
 <script>
 import { useGlobalStore } from '@/store/store.js';
-import hljs from 'highlight.js/lib/core';
-import CodeEditor from 'simple-code-editor';
-import VueFormGenerator from 'vue-form-generator';
 import 'vue-form-generator/dist/vfg.css';
+import FormBuilder from './JsonForm/FormBuilder.vue';
 export default {
   components: {
-    CodeEditor,
-    VueFormGenerator
+    FormBuilder
   },
   setup() {
     const store = useGlobalStore();
@@ -17,9 +14,42 @@ export default {
   },
   data() {
     return {
-      hljs,
       model: {},
-      schema: {}
+      schema: {
+        $id: 'https://example.com/arrays.schema.json',
+        $schema: 'https://json-schema.org/draft/2020-12/schema',
+        description: 'Arrays of strings and objects',
+        title: 'Arrays',
+        type: 'object',
+        properties: {
+          fruits: {
+            type: 'array',
+            items: {
+              type: 'string'
+            }
+          },
+          vegetables: {
+            type: 'array',
+            items: { $ref: '#/$defs/veggie' }
+          }
+        },
+        $defs: {
+          veggie: {
+            type: 'object',
+            required: ['veggieName', 'veggieLike'],
+            properties: {
+              veggieName: {
+                type: 'string',
+                description: 'The name of the vegetable.'
+              },
+              veggieLike: {
+                type: 'boolean',
+                description: 'Do I like this vegetable?'
+              }
+            }
+          }
+        }
+      }
     };
   },
   methods: {}
@@ -30,18 +60,8 @@ export default {
   <div class="container">
     <h1>Json</h1>
     <h2>Ok Slap the JSON structure editor here</h2>
-    <CodeEditor
-      v-model="store.zipfiles['data.json'].data"
-      theme="github-dark"
-      :line-nums="true"
-      :languages="[['JSON', 'json']]"
-      width="100%"
-      height="600px"
-    />
+    <FormBuilder :schema="schema" :model="model" />
   </div>
-
-  <vue-form-generator :schema="store.zipfiles['schema.json'].data" :model="store.zipfiles['data.json'].data"></vue-form-generator>
-
 </template>
 
 <style></style>

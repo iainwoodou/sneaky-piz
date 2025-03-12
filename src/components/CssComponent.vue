@@ -1,6 +1,6 @@
 <script>
 import { useGlobalStore } from '@/store/store.js';
-import hljs from 'highlight.js/lib/core';
+import * as hljs from 'highlight.js';
 import CodeEditor from 'simple-code-editor';
 export default {
   components: {
